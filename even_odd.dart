@@ -1,3 +1,5 @@
+import 'dart:io';
+
 void main() {
   print("Enter number");
   int num = int.parse(stdin.readLineSync()!);
@@ -6,19 +8,22 @@ void main() {
   } else {
     print("$num is odd");
   }
-  bool isprime(int n) {
-    if (n <= 1) {
+
+  if (isPrime(num)) {
+    print("$num is prime");
+  } else {
+    print("$num is not a prime number");
+  }
+}
+
+bool isPrime(int n) {
+  if (n <= 1) {
+    return false;
+  }
+  for (int i = 2; i <= n / 2; i++) {
+    if (n % i == 0) {
       return false;
     }
-    for (int i = 2; i <= n / 2; i++) {
-      if (n % i == 0) {
-        return false;
-      }
-    }
-    if (isprime(num)) {
-      print("$num is prime");
-    } else {
-      print("$num is not a prime number");
-    }
   }
+  return true;
 }
